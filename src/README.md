@@ -1,6 +1,22 @@
 ## Part 1. Инструмент ipcalc
 * 
-* ![]('./screenshots/img_1.png')
+* ![]('./screenshots/img_1.1.png')
+* 
+* ![]('./screenshots/img_1.2.png')
+* 
+* ![]('./screenshots/img_1.3.png')
+* 
+* ![]('./screenshots/img_1.4.png')
+* 
+* ![]('./screenshots/img_1.5.png')
+* 
+* ![]('./screenshots/img_1.6.png')
+* 
+* ![]('./screenshots/img_1.7.png')
+* 
+* ![]('./screenshots/img_1.8.png')
+* 
+* ![]('./screenshots/img_1.9.png')
 ## Part 2. Статическая маршрутизация между двумя машинами
 * 
 * ![]('./screenshots/img_.png')
