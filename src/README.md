@@ -40,8 +40,25 @@
 * 10.10.1.255 - возможен.
 * ![](./screenshots/img_1.9.png)
 ## Part 2. Статическая маршрутизация между двумя машинами
-* 
-* ![](./screenshots/img_.png)
+* В настройках делаем общую сеть на виртуальных машинах.
+* ![](./screenshots/img_2.5.png)
+* С помощью команды "ip a" смотрим существующие сетевые интерфейсы.
+* На ws1:
+* ![](./screenshots/img_2.1.png)
+* На ws2:
+* ![](./screenshots/img_2.2.png)
+* Изменённый файл etc/netplan/00-installer-config.yaml для ws1 и команда "netplan apply" для перезапуска сервиса сети.
+* ![](./screenshots/img_2.3.png)
+* Изменённый файл etc/netplan/00-installer-config.yaml для ws2 и команда "netplan apply".
+* ![](./screenshots/img_2.4.png)
+* Добавляем статический маршрут от одной машины до другой на ws1 при помощи команды "ip r add <IP> dev <DevName>" и пингуем соединение.
+* ![](./screenshots/img_2.6.png)
+* Одновременно добавляем статический маршрут обратно на ws2 и пингуем.
+* ![](./screenshots/img_2.7.png)
+* Добавляем статический маршрут на ws1 от одной машины до другой с помощью файла etc/netplan/00-installer-config.yaml и пингуем.
+* ![](./screenshots/img_2.8.png)
+* Аналогично на ws2.
+* ![](./screenshots/img_2.9.png)
 ## Part 3. Утилита iperf3
 * 
 * ![](./screenshots/img_.png)
