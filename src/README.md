@@ -141,8 +141,26 @@
 * Запускаем "tcpdump -n -i eth0 icmp" и смотрим проходящие через r1 запросы. Видим echo request от ws11.
 * ![](./screenshots/img_5.24.png)
 ## Part 6. Динамическая настройка IP с помощью DHCP
-* 
-* ![](./screenshots/img_.png)
+* На r1 в файле /etc/dhcp/dhcpd.conf настраиваем конфигурацию службы DHCP:
+* ![](./screenshots/img_6.1.png)
+* В файле resolv.conf прописываем nameserver 8.8.8.8.
+* ![](./screenshots/img_6.2.png)
+* Перезагружаем службу DHCP командой "systemctl restart isc-dhcp-server".
+* ![](./screenshots/img_6.3.png)
+* В сетевом конфиге на ws21 включаем получение IP через DHCP. Делаем рестарт командой "reboot".
+* ![](./screenshots/img_6.4.png)
+* Выполняем команду "ip a" и видим новый IP адресс. Пингуем ws22.
+* ![](./screenshots/img_6.5.png)
+* Изменяем конфигурацию сети на ws11.
+* ![](./screenshots/img_6.6.png)
+* На r1 делаем привязку к MAC адрессу.
+* ![](./screenshots/img_6.7.png)
+* Прописываем DNS сервер.
+* ![](./screenshots/img_6.8.png)
+* Проверяем пингом хостов.
+* ![](./screenshots/img_6.9.png)
+* Запросим на ws21 обновление ip адреса командами "dhclient -r <dev>" и "dhclient <dev>".
+* ![](./screenshots/img_6.10.png)
 ## Part 7. NAT
 * 
 * ![](./screenshots/img_.png)
