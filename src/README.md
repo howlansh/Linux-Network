@@ -121,7 +121,7 @@
 * ![](./screenshots/img_5.14.png)
 * На ws21:
 * ![](./screenshots/img_5.15.png)
-* На r2 выполняем "tcpdump -tn -i <DEV>", команда слушает интерфейс enp0s8 и показывает, что пинг проходит.
+* На r2 выполняем "tcpdump -tn -i enp0s8", команда слушает интерфейс enp0s8 и показывает, что пинг проходит.
 * ![](./screenshots/img_5.17.png)
 * На ws11 пакеты отправляются, но ответ не приходит.
 * ![](./screenshots/img_5.16.png)
@@ -159,7 +159,7 @@
 * ![](./screenshots/img_6.8.png)
 * Проверяем пингом хостов.
 * ![](./screenshots/img_6.9.png)
-* Запросим на ws21 обновление ip адреса командами "dhclient -r <dev>" и "dhclient <dev>".
+* Запросим на ws21 обновление ip адреса командами "dhclient -r enp0s8" и "dhclient enp0s8".
 * ![](./screenshots/img_6.10.png)
 ## Part 7. NAT
 * 
