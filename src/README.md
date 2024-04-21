@@ -189,5 +189,13 @@
 * Проверяем соединение по TCP для DNAT, для этого с r1 подключиться к серверу Apache на ws22 командой "telnet"..
 * ![](./screenshots/img_7.10.png)
 ## Part 8. Допополнительно. Знакомство с SSH Tunnel
-* 
-* ![](./screenshots/img_.png)
+* Запускаем веб-сервер Apache на ws22 только на localhost.
+* ![](./screenshots/img_8.1.png)
+* Воспользуемся Local TCP forwarding с ws21 до ws22, чтобы получить доступ к веб-серверу на ws22 с ws21. Команда "ssh -L 8080:10.20.0.20:80 howlansh@localhost".
+* ![](./screenshots/img_8.2.png)
+* Для проверки выполним команду "telnet 127.0.0.1 [локальный порт]".
+* ![](./screenshots/img_8.3.png)
+* Воспользуемся Remote TCP forwarding c ws11 до ws22, чтобы получить доступ к веб-серверу на ws22 с ws11. Команда "ssh -R 8080:10.20.0.20:80 howlansh@localhost".
+* ![](./screenshots/img_8.4.png)
+* Проверка той же командой.
+* ![](./screenshots/img_8.5.png)
