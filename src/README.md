@@ -162,8 +162,32 @@
 * Запросим на ws21 обновление ip адреса командами "dhclient -r enp0s8" и "dhclient enp0s8".
 * ![](./screenshots/img_6.10.png)
 ## Part 7. NAT
-* 
-* ![](./screenshots/img_.png)
+* В файле "/etc/apache2/ports.conf" изменяем строку Listen 80 на Listen 0.0.0.0:80, то есть делаем сервер Apache2 общедоступным. Запускаем веб-сервер Apache командой "service apache2 start".
+* На r1:
+* ![](./screenshots/img_7.1.png)
+* На ws22:
+* ![](./screenshots/img_7.2.png)
+* Добавляем в файерволл на r2 следующие правила:
+* Удаление правил в таблице filter - "iptables -F".
+* Удаление правил в таблице "NAT" - "iptables -F -t nat".
+* Отбрасывать все маршрутизируемые пакеты - "iptables --policy FORWARD DROP".
+* ![](./screenshots/img_7.3.png)
+* Проверяем соединение между ws22 и r1 командой "ping".
+* ![](./screenshots/img_7.4.png)
+* При запуске с этими правилами, ws22 не пингуется с r1.
+* ![](./screenshots/img_7.5.png)
+* Добавляем ещё одно правило и разрешаем маршрутизацию всех пакетов протокола ICMP.
+* ![](./screenshots/img_7.6.png)
+* При запуске с этими правилами, ws22 пингуется с r1.
+* ![](./screenshots/img_7.7.png)
+* Добавляем ещё два правила:
+* Включаем SNAT, а именно маскирование всех локальных ip из локальной сети, находящейся за r2.
+* Включаем DNAT на 8080 порт машины r2 и добавляем к веб-серверу Apache, запущенному на ws22, доступ извне сети.
+* ![](./screenshots/img_7.8.png)
+* Проверяем соединение по TCP для SNAT, для этого с ws22 подключиться к серверу Apache на r1 командой "telnet [адрес] [порт]".
+* ![](./screenshots/img_7.9.png)
+* Проверяем соединение по TCP для DNAT, для этого с r1 подключиться к серверу Apache на ws22 командой "telnet"..
+* ![](./screenshots/img_7.10.png)
 ## Part 8. Допополнительно. Знакомство с SSH Tunnel
 * 
 * ![](./screenshots/img_.png)
